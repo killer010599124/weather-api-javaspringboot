@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Spring Boot Weather App</title>
+	
+</head>
+
+<body>
+	<h1 class="text-center">Weather App</h1>
+	<div class="text-center">
+		<form th:action="@{/search}" method="post" role="form" id="MyForm">
+			<div class="modal-body" style="display: flex;justify-content: center;">
+				<input type="text" name="location" required="" placeholder="Enter Location" class="form-control"
+					style="width: 284px;">
+			</div>
+			<button type="submit" class=" mb-3"
+				style="width: 286px; background-color: #4798e7; border: 0px; border-radius: 4px; height: 34px; color: white;">
+				Search
+			</button>
+		</form>
+	</div>
+
+
+
+	<div th:if="${data != null}">
+		<h2>[[${data}]]</h2>
+		<table id="tblCategory" class="table listing-table">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Max Temp (F)</th>
+					<th>Min Temp (F)</th>
+					<th>Feels Like Max (F)</th>
+					<th>Feels Like Min (F)</th>
+					<th>Humidity (%)</th>
+					<th>Precipitation (in)</th>
+					<th>Wind Gust (mph)</th>
+					<th>Wind Speed (mph)</th>
+					<th>Wind Direction</th>
+					<th>Pressure (hPa)</th>
+					<th>Cloud Cover (%)</th>
+					<th>Visibility (mi)</th>
+					<th>Solar Radiation (W/m²)</th>
+					<th>Solar Energy (kWh/m²)</th>
+					<th>UV Index</th>
+					<th>Severe Risk</th>
+					<th>Sunrise</th>
+					<th>Sunset</th>
+					<th>Moon Phase</th>
+					<th>Conditions</th>
+					<th>Description</th>
+					<th>Icon</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="day : ${data.days}">
+					<td th:text="${day.datetime}"></td>
+					<td th:text="${day.tempmax}"></td>
+					<td th:text="${day.tempmin}"></td>
+					<td th:text="${day.feelslikemax}"></td>
+					<td th:text="${day.feelslikemin}"></td>
+					<td th:text="${day.humidity}"></td>
+					<td th:text="${day.precip}"></td>
+					<td th:text="${day.windgust}"></td>
+					<td th:text="${day.windspeed}"></td>
+					<td th:text="${day.winddir}"></td>
+					<td th:text="${day.pressure}"></td>
+					<td th:text="${day.cloudcover}"></td>
+					<td th:text="${day.visibility}"></td>
+					<td th:text="${day.solarradiation}"> </td>
+					<td th:text="${day.solarenergy}"></td>
+					<td th:text="${day.uvindex}"></td>
+					<td th:text="${day.severerisk}"></td>
+					<td th:text="${day.sunrise}"></td>
+					<td th:text="${day.sunset}"></td>
+					<td th:text="${day.moonphase}"></td>
+					<td th:text="${day.conditions}"></td>
+					<td th:text="${day.description}"></td>
+					<td th:text="${day.icon}"></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

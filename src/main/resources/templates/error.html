@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Error</title>
+</head>
+<body>
+    <h1>An error occurred!</h1>
+    <p>We encountered an unexpected problem (Status Code: [[${statusCode}]])</p>
+    <p th:if="${errorMessage != null}">Error Details: [[${errorMessage}]]</p>
+</body>
+</html>
